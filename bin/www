@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
+
 /**
  * Module dependencies.
  */
+
+// Configuramos "dotenv" 
+require('dotenv').config();
 
 var app = require('../app');
 var debug = require('debug')('nodepop:server');
