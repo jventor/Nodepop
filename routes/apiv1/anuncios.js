@@ -3,7 +3,10 @@
 // Creamos el router
 const express = require('express');
 const router = express.Router();
+const jwtAuth = require('../../lib/jwtAuth');
 const Anuncio = require('../../models/Anuncio');
+
+router.use(jwtAuth());
 
 /**
  * GET /anuncios
