@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "cross-env DEBUG=nodepop:* nodemon ./bin/www"
+    "dev": "cross-env DEBUG=nodepop:* nodemon ./bin/www",
+    "initdb": "node ./init/install_db.js"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
@@ -13,6 +14,7 @@
     "dotenv": "^4.0.0",
     "ejs": "~2.5.7",
     "express": "~4.15.5",
+    "mongoose": "^4.13.6",
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5"
   },
