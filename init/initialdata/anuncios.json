@@ -4,7 +4,7 @@
             "nombre":   "Bicicleta",
             "venta":   true,
             "precio":   230.15,
-            "foto":   "images/anuncios/bici.jpg",        
+            "foto":   "images/anuncios/bike.jpg",        
             "tags":   ["lifestyle", "motor"]
         },
         {
@@ -13,5 +13,19 @@
             "precio":   50.00,
             "foto":   "images/anuncios/iphone.png",     
             "tags":   ["lifestyle","mobile"]
+        },
+        {
+            "nombre":   "iPad",
+            "venta":   false,
+            "precio":   200.00,
+            "foto":   "images/anuncios/ipad.png",     
+            "tags":   ["lifestyle","mobile"]
+        },
+        {
+            "nombre":   "Escritorio",
+            "venta":   false,
+            "precio":   103.00,
+            "foto":   "images/anuncios/desk.jpg",     
+            "tags":   ["work"]
         }
     ]

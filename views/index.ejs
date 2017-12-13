@@ -3,9 +3,15 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <% anuncios.forEach( anuncio => { %>
+      <p><b><%= anuncio.nombre %></b></p>
+      <p><%= anuncio.precio %></p>
+      <img src="<%= anuncio.foto %>" width="150"></img>
+    <% }) %>
   </body>
 </html>
