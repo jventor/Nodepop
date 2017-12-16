@@ -56,15 +56,14 @@ router.get('/', async(req,res,next) => {
 			filter.tags = { $in: tag.split(' ')};
 		}
 
-
 		const anuncios = await Anuncio.list(filter, limit, start, sort,fields);
 
 		if (includeTotal === 'true'){
 			const numRows = await Anuncio.find(filter).exec();
-			res.json({ result: anuncios, total: numRows.length });
+			res.json({ success: 'true', result: anuncios, total: numRows.length });
 		}
 		else{
-			res.json({ result: anuncios });
+			res.json({ success: 'true', result: anuncios });
 		}
 	}
 	catch(err){
@@ -76,10 +75,28 @@ router.get('/', async(req,res,next) => {
  * GET /anuncios:id
  * Lista el anuncio con identificado id
  */
+router.get('/tags', async (req, res, next) =>{
+	try{
+		const query = Anuncio.find().distinct('tags');
+
+		const tags = await query.exec();
+		console.log(tags);
+		res.json({ success: 'true', result: tags });
+	}
+	catch(err){
+		next(err);
+	}
+});
+
+
+/**
+ * GET /anuncios:id
+ * Lista el anuncio con identificado id
+ */
 router.get('/:id', async (req, res) =>{
 	const _id = req.params.id;
 	const anuncio = await Anuncio.findOne({_id}).exec();
-	res.json({ result: anuncio });
+	res.json({ success: 'true', result: anuncio });
 });
 
 /**
@@ -93,8 +110,12 @@ router.post('/', (req, res, next)=>{
 			next(err);
 			return;
 		}
-		res.json({ result: anuncioGuardado });
+		res.json({ success: 'true', result: anuncioGuardado });
 	});
 });
+
+
+
+
 // Exportamos router
 module.exports = router;

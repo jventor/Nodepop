@@ -3,12 +3,17 @@
 const mongoose = require('mongoose');
 
 const anuncioSchema = mongoose.Schema({
-	nombre : String,
+	nombre : { 
+		type: String, 
+		index: true
+	},
 	venta : Boolean,
 	precio : Number,
 	foto : String,
 	tags : [String]
 });
+
+anuncioSchema.set('autoIndex', true);
 
 // Creamos un metodo estatico
 anuncioSchema.statics.list = function(filters,limit, skip,sort,fields){

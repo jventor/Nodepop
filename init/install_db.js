@@ -41,16 +41,26 @@ function saveDato(model, val){
 }
 
 async function cargarData(collectionName, model, fileName){
-	await initCollection(collectionName);
-	let datosJSON = await getData(fileName,'utf8');         
-	for (let i = 0; i < datosJSON.length; i++){
-		await saveDato(model,datosJSON[i]);
+	try{
+		await initCollection(collectionName);
+		let datosJSON = await getData(fileName,'utf8');         
+		for (let i = 0; i < datosJSON.length; i++){
+			//await saveDato(model,datosJSON[i]);
+			await new Promise(function(resolve, reject){
+				new model(datosJSON[i]).save((err, item) => { 
+					err ? reject(err) : resolve(item); 
+				});
+			});			
+		}
+		console.log(`   -> Datos cargados de ${collectionName} desde ${fileName}`);				
 	}
-	console.log(`   -> Datos cargados de ${collectionName} desde ${fileName}`);
+	catch(err){
+		console.log('Error cargarData(install_db.js):\n', err);
+	}
 }
 
-cargarData('anuncios',Anuncio,'./init/initialdata/anuncios.json')
-	.then( () => cargarData('usuarios',Usuario,'./init/initialdata/usuarios.json'))
+cargarData('anuncios', Anuncio,process.env.PATH_ANUNCIOS_INICIALES)
+	.then( () => cargarData('usuarios', Usuario,process.env.PATH_USUARIOS_INICIALES))
 	.then( () => conn.close(function(err){
 		if (err) {
 			console.log('Error cerrando la BBDD: ' + err);

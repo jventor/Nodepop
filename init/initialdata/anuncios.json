@@ -27,5 +27,33 @@
             "precio":   103.00,
             "foto":   "images/anuncios/desk.jpg",     
             "tags":   ["work"]
+        },
+        {
+            "nombre":   "Triciclo",
+            "venta":   true,
+            "precio":   120.50,
+            "foto":   "images/anuncios/bike.jpg",        
+            "tags":   ["lifestyle", "motor"]
+        },
+        {
+            "nombre":   "iPhone 6S",
+            "venta":   false,
+            "precio":   600.00,
+            "foto":   "images/anuncios/iphone.png",     
+            "tags":   ["lifestyle","mobile"]
+        },
+        {
+            "nombre":   "iPad 10",
+            "venta":   true,
+            "precio":   700.00,
+            "foto":   "images/anuncios/ipad.png",     
+            "tags":   ["lifestyle","mobile"]
+        },
+        {
+            "nombre":   "Escritorio",
+            "venta":   true,
+            "precio":   150.00,
+            "foto":   "images/anuncios/desk.jpg",     
+            "tags":   ["work"]
         }
     ]
