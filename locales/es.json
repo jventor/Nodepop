@@ -1,6 +1,10 @@
 {
-	"USER_NOT_FOUND": 		"Usuario no encontrado",
-	"INVALID_CREDENTIALS": 	"Credenciales inválidas",
-	"NO_TOKEN_PROVIDED": 	"Token no aportado",
-	"INVALID_TOKEN": 		"Token inválido"
+	"USER_NOT_FOUND": "Usuario no encontrado",
+	"INVALID_CREDENTIALS": "Credenciales inválidas",
+	"NO_TOKEN_PROVIDED": "Token no aportado",
+	"INVALID_TOKEN": "Token inválido",
+	"EMAIL_NOT_EXIST": "Falta indicar la dirección de email",
+	"EMAIL_WRONG_FORMAT": "Email con formato incorrecto",
+	"PASSWORD_NOT_EXIST": "Falta indicar la contraseña",
+	"NAME_NOT_EXIST": "Falta indicar el nombre"
 }

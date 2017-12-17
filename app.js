@@ -1,5 +1,6 @@
 
 var express = require('express');
+const CustomError = require('./lib/custom-error');
 
 //Importación y configuración del MW de internacionalizacion 'i18n'
 const i18n = require('i18n');
@@ -42,9 +43,9 @@ app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-	var err = new Error('Not Found');
-	err.status = 404;
-	next(err);
+	//var err = new Error('Not Found');
+	//err.status = 404;
+	next(CustomError('Not Found', 404));
 });
 
 // error handler
@@ -52,7 +53,7 @@ app.use(function(err, req, res, next) {
 	if (err.array){ // es un error de express-validator
 		err.status = 422;
 		const errInfo = err.array({ onlyFirstError: true })[0];
-		err.message   = isAPI(req)? { success: 'false', message: 'Not valid', errors: err.mapped()} : // esta respuesta para APIs
+		err.message   = isAPI(req)? res.__(errInfo.msg) : // esta respuesta para APIs
 			`Not valid - ${errInfo.param} ${errInfo.msg}`; // para otras peticiones
 	}
 	res.status(err.status || 500);

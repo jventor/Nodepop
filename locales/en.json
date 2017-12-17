@@ -2,5 +2,9 @@
 	"USER_NOT_FOUND": 		"User not found",
 	"INVALID_CREDENTIALS": 	"Invalid credentials",
 	"NO_TOKEN_PROVIDED": 	"No token provided",
-	"INVALID_TOKEN": 		"Invalid token"
+	"INVALID_TOKEN": 		"Invalid token",
+	"EMAIL_NOT_EXIST": 		"Email not exists",
+	"EMAIL_WRONG_FORMAT": 	"Email wrong format",
+	"PASSWORD_NOT_EXIST":	"Password not exist",
+	"NAME_NOT_EXIST":		"Name not exists"
 }
