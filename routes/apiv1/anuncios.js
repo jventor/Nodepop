@@ -116,7 +116,7 @@ router.get('/:id', async (req, res) =>{
  * POST /anuncios
  * Crea un anuncio
  */
-router.post('/', (req, res, next)=>{
+router.post('/new', (req, res, next)=>{
 	const anuncio = new Anuncio(req.body);
 	anuncio.save((err, anuncioGuardado)=>{
 		if (err) return next(err);
