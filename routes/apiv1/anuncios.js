@@ -6,7 +6,7 @@ const router = express.Router();
 const jwtAuth = require('../../lib/jwtAuth');
 const Anuncio = require('../../models/Anuncio');
 
-router.use(jwtAuth());
+//router.use(jwtAuth());
 
 /**
  * GET /anuncios
@@ -26,10 +26,8 @@ router.get('/', async(req,res,next) => {
         
 		//creo el filtro vacio
 		const filter = {};
-		if (nombre){
-			filter.nombre = new RegExp('^'+nombre,'i');
-		}
-        
+		if (nombre) filter.nombre = new RegExp('^'+nombre,'i');
+		
 		if (precio){
 			const rango = precio.split('-');
 			if (rango.length === 1 ){
@@ -48,13 +46,9 @@ router.get('/', async(req,res,next) => {
 			}     
 		}
         
-		if (venta){
-			filter.venta = venta;
-		}
-
-		if (tag){
-			filter.tags = { $in: tag.split(' ')};
-		}
+		if (venta) filter.venta = venta;
+		
+		if (tag) filter.tags = { $in: tag.split(' ')};
 
 		const anuncios = await Anuncio.list(filter, limit, start, sort,fields);
 
@@ -78,16 +72,13 @@ router.get('/', async(req,res,next) => {
 router.get('/tags', async (req, res, next) =>{
 	try{
 		const query = Anuncio.find().distinct('tags');
-
 		const tags = await query.exec();
-		console.log(tags);
 		res.json({ success: 'true', result: tags });
 	}
 	catch(err){
 		next(err);
 	}
 });
-
 
 /**
  * GET /anuncios:id
@@ -106,16 +97,10 @@ router.get('/:id', async (req, res) =>{
 router.post('/', (req, res, next)=>{
 	const anuncio = new Anuncio(req.body);
 	anuncio.save((err, anuncioGuardado)=>{
-		if (err){
-			next(err);
-			return;
-		}
+		if (err) return next(err);
 		res.json({ success: 'true', result: anuncioGuardado });
 	});
 });
-
-
-
 
 // Exportamos router
 module.exports = router;

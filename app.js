@@ -1,4 +1,14 @@
+
 var express = require('express');
+
+const i18n = require('i18n');
+//Inicializa i18n
+i18n.configure({
+	locales: ['en', 'es', 'it'],
+	defaultLocale: 'it',
+	directory: __dirname + '/locales'
+});
+
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -13,6 +23,8 @@ require('./lib/connectionMongoose');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//Middleware
+app.use(i18n.init);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
