@@ -1,7 +1,6 @@
 {
-	"Hello i18n": "Hello i18n",
-	"Hello": "Hello Kittyy",
-	"USER_NOT_FOUND": "User not found",
-	"INVALID_CREDENTIALS": "Invalid credentials",
-	"USER": "User"
+	"USER_NOT_FOUND": 		"User not found",
+	"INVALID_CREDENTIALS": 	"Invalid credentials",
+	"NO_TOKEN_PROVIDED": 	"No token provided",
+	"INVALID_TOKEN": 		"Invalid token"
 }

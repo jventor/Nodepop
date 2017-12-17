@@ -32,18 +32,11 @@ function initCollection(collectionName){
 	});
 }
 
-function saveDato(model, val){
-	return new Promise(function(resolve, reject){
-		new model(val).save((err, item) => { 
-			err ? reject(err) : resolve(item); 
-		});
-	});
-}
-
 async function cargarData(collectionName, model, fileName){
 	try{
 		await initCollection(collectionName);
-		let datosJSON = await getData(fileName,'utf8');         
+		let datosJSONFull = await getData(fileName,'utf8'); 
+		const datosJSON = datosJSONFull[collectionName];
 		for (let i = 0; i < datosJSON.length; i++){
 			//await saveDato(model,datosJSON[i]);
 			await new Promise(function(resolve, reject){
@@ -69,7 +62,7 @@ cargarData('anuncios', Anuncio,process.env.PATH_ANUNCIOS_INICIALES)
 	}))
 	.catch(err =>{
 		// este catch se activa si falla cualuiera de las promesas anteriores
-		console.log('   !!! -> Hubo un fallo: ', err);
+		console.log('   !!! -> Hubo un fallo en la carga de datos: ', err);
 	});
 
 

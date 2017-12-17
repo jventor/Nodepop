@@ -1,13 +1,14 @@
 
 var express = require('express');
 
+//Importación y configuración del MW de internacionalizacion 'i18n'
 const i18n = require('i18n');
-//Inicializa i18n
 i18n.configure({
-	locales: ['en', 'es', 'it'],
-	defaultLocale: 'it',
+	locales: ['en', 'es'],
+	defaultLocale: 'en',
 	directory: __dirname + '/locales'
 });
+
 
 var path = require('path');
 var logger = require('morgan');
@@ -66,7 +67,6 @@ app.use(function(err, req, res, next) {
 	res.locals.error = req.app.get('env') === 'development' ? err : {};
 	
 	// render the error page
-	
 	res.render('error');
 });
 	

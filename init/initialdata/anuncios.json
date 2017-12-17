@@ -1,4 +1,5 @@
 
+    { "anuncios":
     [           
         {
             "nombre":   "Bicicleta",
@@ -57,3 +58,4 @@
             "tags":   ["work"]
         }
     ]
+    }

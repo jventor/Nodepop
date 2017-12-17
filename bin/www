@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-
 /**
  * Module dependencies.
  */
@@ -10,7 +9,7 @@ require('dotenv').config();
 
 var app = require('../app');
 var debug = require('debug')('nodepop:server');
-var http = require('http');
+var https = require('https');
 
 /**
  * Get port from environment and store in Express.
@@ -19,11 +18,18 @@ var http = require('http');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+const fs = require('fs');
+const options = {
+	key: fs.readFileSync('certificados/host.key'),
+	cert: fs.readFileSync('certificados/host.cert'),
+	rejectUnauthorized: false
+};
+
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = https.createServer(options, app);
 
 /**
  * Listen on provided port, on all network interfaces.
