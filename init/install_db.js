@@ -38,12 +38,7 @@ async function cargarData(collectionName, model, fileName){
 		let datosJSONFull = await getData(fileName,'utf8'); 
 		const datosJSON = datosJSONFull[collectionName];
 		for (let i = 0; i < datosJSON.length; i++){
-			//await saveDato(model,datosJSON[i]);
-			await new Promise(function(resolve, reject){
-				new model(datosJSON[i]).save((err, item) => { 
-					err ? reject(err) : resolve(item); 
-				});
-			});			
+			await (new model(datosJSON[i])).save();	
 		}
 		console.log(`   -> Datos cargados de ${collectionName} desde ${fileName}`);				
 	}
