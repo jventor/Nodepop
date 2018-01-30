@@ -9,7 +9,7 @@ require('dotenv').config();
 
 var app = require('../app');
 var debug = require('debug')('nodepop:server');
-var https = require('https');
+var http = require('http');
 
 /**
  * Get port from environment and store in Express.
@@ -18,18 +18,11 @@ var https = require('https');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-const fs = require('fs');
-const options = {
-	key: fs.readFileSync('certificados/host.key'),
-	cert: fs.readFileSync('certificados/host.cert'),
-	rejectUnauthorized: false
-};
-
 /**
  * Create HTTP server.
  */
 
-var server = https.createServer(options, app);
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
