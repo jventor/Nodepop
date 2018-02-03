@@ -181,3 +181,38 @@ Actualmente estos puedes ser:
 'en' -> para inglés (valor por defecto)
 
 * Si se desea añadir otro idioma, simplemente se debe incluir en la carpeta *locales* el archivo xx.js, siendo xx el idioma deseado
+
+# Despliegue en AWS
+
+### Características del despliegue:
+
+- Instancia EC2 de amazon web services (AWS)
+- S.O. Ubuntu Server 16.04
+- Node como servidor de aplicaciónes
+- Servidor web / Proxy inverso : Nginx
+- Gestor de procesos: PM2 (para mantener viva la aplicación )
+- Mongo DB como servidor de BBDD
+- Certificados de Letsencryt para servir bajo el protocolo https
+
+### Posibles accesos
+
+- **Usando IP directa o usando el subdominio www** 
+
+[http://34.242.133.91/](http://34.242.133.91/)
+
+[https://www.erpnet.es/](https://www.erpnet.es/)
+
+Accediendo al subdominio www o directamente a la IP del servidor, podremos visualizar la plantilla web estática desplegada y servida directamente por Nginx. (Si se accede a la IP directamente al no estar incluido en el certificado saldrá como página no segura)
+
+- **Usando el subdominio nodepop**
+
+[https://nodepop.erpnet.es/](https://nodepop.erpnet.es/)
+
+Para poder comprobar que los archivos estáticos son servidos y cacheados por Nginx se ha creado está web que muestra los anuncios dados de alta en la aplicación.
+Para poder verificarlo se ha añadido una cabecera personalizada a los archivos estáticos, "X-Owner: jventor" , que se puede ver con el depurador del navegador (chrome, por ejemplo)
+
+- **usando el dominio api**
+
+[https://api.erpnet.es/apiv1/](https://api.erpnet.es/apiv1/)
+
+Esta dirección apunta directamente a la raiz de la API de la aplicación Nodepop
